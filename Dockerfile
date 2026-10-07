@@ -10,4 +10,4 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "main2.py"]
+CMD ["sh", "-c", "gunicorn app:app & python3 main2.py"]
