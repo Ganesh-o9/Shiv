@@ -1,9 +1,21 @@
-FROM ghcr.io/missemily2022/anasty:heroku
+FROM python:3.10-slim
 
 WORKDIR /usr/src/app
-RUN chmod 777 /usr/src/app
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ffmpeg \
+    libcurl4-openssl-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    gcc \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-RUN pip3 install --no-cache-dir -r requirements.txt
 
-CMD gunicorn app:app & python3 main2.py
+CMD ["sh", "-c", "gunicorn app:app & python3 main2.py"]
