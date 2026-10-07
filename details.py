@@ -1,5 +1,13 @@
-api_id = "20767676"
-api_hash = "7e1fd1a8ec48ad69175548350eae87b2"
-bot_token = "8030743273:AAG2eU0LXjUpGliTCVEn0AiMGpqWaGh7gAs"
-sudo_groups = -1003357226996
+import os
+
+api_id = int(os.getenv("API_ID"))
+api_hash = os.getenv("API_HASH")
+bot_token = os.getenv("BOT_TOKEN")
+sudo_groups = int(os.getenv("SUDO_GROUPS"))
+
+
+#api_id = "20767676"
+#api_hash = "7e1fd1a8ec48ad69175548350eae87b2"
+#bot_token = "8030743273:AAG2eU0LXjUpGliTCVEn0AiMGpqWaGh7gAs"
+#sudo_groups = -1003357226996
 
